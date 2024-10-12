@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<robot name="eureka" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- Contains all the ros2_control plugins -->
+<ros2_control name="eureka_ros2_control" type="system">
+  <hardware>
+    <plugin>eureka/RobotSystem</plugin>
+  </hardware>
+  <joint name="joint1">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint2">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint3">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint4">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint5">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint6a">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint6b">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+</ros2_control>
+</robot>

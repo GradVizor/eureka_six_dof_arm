@@ -1,0 +1,259 @@
+<?xml version="1.0" ?>
+<robot name="eureka" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find eureka)/urdf/materials.xacro" />
+<xacro:include filename="$(find eureka)/urdf/robot.trans" />
+<xacro:include filename="$(find eureka)/urdf/robot.gazebo" />
+<xacro:include filename="$(find eureka)/urdf/ros2_control.xacro" />
+
+<!-- Define reusable materials -->
+<material name="Yellow">
+  <color rgba="1 1 0 1"/> <!-- Yellow: Full red and green, no blue -->
+</material>
+<material name="Black">
+  <color rgba="0.2 0.2 0.2 1"/> <!-- Black: No red, green, or blue -->
+</material>
+
+<!-- Links declaration -->
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0007276697908359509 0.0007276631815662651 0.03880049948733369" rpy="0 0 0"/>
+    <mass value="45.58402492211594"/>
+    <inertia ixx="0.288555" iyy="0.288556" izz="0.52712" ixy="0.003308" iyz="-0.000123" ixz="-0.000123"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Black"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link1">
+  <inertial>
+    <origin xyz="-0.05902032579629249 -0.003941108419941054 0.06476575765172447" rpy="0 0 0"/>
+    <mass value="18.749572652131352"/>
+    <inertia ixx="0.097337" iyy="0.193623" izz="0.132247" ixy="-0.004857" iyz="0.004386" ixz="0.074155"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.104" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Yellow"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.104" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link2">
+  <inertial>
+    <origin xyz="0.009346897146999489 0.03651319071311888 0.14985039970529684" rpy="0 0 0"/>
+    <mass value="8.312006838524212"/>
+    <inertia ixx="0.150086" iyy="0.153093" izz="0.005505" ixy="0.000189" iyz="0.000123" ixz="-0.001866"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.15 0.0 -0.244" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Black"/>
+  </visual>
+  <collision>
+    <origin xyz="0.15 0.0 -0.244" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link3">
+  <inertial>
+    <origin xyz="0.039242624893359335 -0.026360900955918608 0.044012616156980156" rpy="0 0 0"/>
+    <mass value="11.391153211315999"/>
+    <inertia ixx="0.063977" iyy="0.067087" izz="0.015219" ixy="0.000984" iyz="0.000822" ixz="-0.002886"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.15 0.0 -0.594" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Yellow"/>
+  </visual>
+  <collision>
+    <origin xyz="0.15 0.0 -0.594" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link4">
+  <inertial>
+    <origin xyz="1.007277219966518e-09 -4.787836793695988e-16 0.08948922591366981" rpy="0 0 0"/>
+    <mass value="4.568343005571681"/>
+    <inertia ixx="0.012072" iyy="0.010883" izz="0.004449" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.105 0.028 -0.82" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Black"/>
+  </visual>
+  <collision>
+    <origin xyz="0.105 0.028 -0.82" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link5">
+  <inertial>
+    <origin xyz="-5.412337245047638e-16 -0.011999999999995629 0.058283671544094084" rpy="0 0 0"/>
+    <mass value="2.651613220666019"/>
+    <inertia ixx="0.002836" iyy="0.002856" izz="0.0019" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.105 0.0155 -0.955" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Yellow"/>
+  </visual>
+  <collision>
+    <origin xyz="0.105 0.0155 -0.955" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link6">
+  <inertial>
+    <origin xyz="-2.914335439641036e-16 -8.847089727481716e-16 0.0063504911070444425" rpy="0 0 0"/>
+    <mass value="0.600362897277973"/>
+    <inertia ixx="0.000253" iyy="0.000301" izz="0.000315" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.105 0.0275 -1.059" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Black"/>
+  </visual>
+  <collision>
+    <origin xyz="0.105 0.0275 -1.059" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link7a">
+  <inertial>
+    <origin xyz="0.012842681087569856 -0.009000000000000907 0.0516195534637649" rpy="0 0 0"/>
+    <mass value="0.5898580691232992"/>
+    <inertia ixx="0.00075" iyy="0.000861" izz="0.000143" ixy="0.0" iyz="0.0" ixz="-0.000223"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.06419 0.0185 -1.081892" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link7a.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Yellow"/>
+  </visual>
+  <collision>
+    <origin xyz="0.06419 0.0185 -1.081892" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link7a.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="link7b">
+  <inertial>
+    <origin xyz="-0.012842681087570723 0.008999999999999144 0.051619553463764234" rpy="0 0 0"/>
+    <mass value="0.5898580691232992"/>
+    <inertia ixx="0.00075" iyy="0.000861" izz="0.000143" ixy="0.0" iyz="0.0" ixz="0.000223"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.14581 0.0365 -1.081892" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link7b.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Yellow"/>
+  </visual>
+  <collision>
+    <origin xyz="0.14581 0.0365 -1.081892" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find eureka)/meshes/link7b.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<link name="dummy_root">
+    <visual>
+        <geometry>
+            <box size="0.01 0.01 0.01"/> 
+        </geometry>
+    </visual>
+</link>
+
+<!-- Joints declaration -->
+<joint name="joint1" type="continuous">
+  <origin xyz="0.0 0.0 0.104" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="link1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+<joint name="joint2" type="continuous">
+  <origin xyz="-0.15 -0.0 0.14" rpy="0 0 0"/>
+  <parent link="link1"/>
+  <child link="link2"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+<joint name="joint3" type="continuous">
+  <origin xyz="0.0 0.0 0.35" rpy="0 0 0"/>
+  <parent link="link2"/>
+  <child link="link3"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+<joint name="rigid1" type="fixed">
+  <origin xyz="0.045 -0.028 0.226" rpy="0 0 0"/>
+  <parent link="link3"/>
+  <child link="link4"/>
+</joint>
+<joint name="joint4" type="continuous">
+  <origin xyz="0.0 0.0125 0.135" rpy="0 0 0"/>
+  <parent link="link4"/>
+  <child link="link5"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+<joint name="joint5" type="continuous">
+  <origin xyz="0.0 -0.012 0.104" rpy="0 0 0"/>
+  <parent link="link5"/>
+  <child link="link6"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+<joint name="joint6a" type="continuous">
+  <origin xyz="0.04081 0.009 0.022892" rpy="0 0 0"/>
+  <parent link="link6"/>
+  <child link="link7a"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+<joint name="joint6b" type="continuous">
+  <origin xyz="-0.04081 -0.009 0.022892" rpy="0 0 0"/>
+  <parent link="link6"/>
+  <child link="link7b"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+<joint name="dummy_root_to_base" type="fixed">
+    <parent link="dummy_root"/>
+    <child link="base_link"/>
+</joint>
+
+</robot>
