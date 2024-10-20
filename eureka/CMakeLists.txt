@@ -96,6 +96,10 @@ install(
   DESTINATION share/eureka
 )
 install(
+  DIRECTORY meshes
+  DESTINATION share/eureka
+)
+install(
     TARGETS send_trajectory command_test
     RUNTIME DESTINATION lib/eureka
 )
