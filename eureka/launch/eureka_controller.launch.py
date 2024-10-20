@@ -3,9 +3,11 @@ from launch.actions import RegisterEventHandler, DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, LaunchConfiguration
-
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from ament_index_python.packages import get_package_share_directory
+import xacro
+import os
 
 
 def generate_launch_description():
@@ -18,20 +20,10 @@ def generate_launch_description():
             description="Start RViz2 automatically with this launch file.",
         )
     )
-    # Get URDF via xacro
-    robot_description_content = Command(
-        [
-            PathJoinSubstitution([FindExecutable(name="xacro")]),
-            " ",
-            PathJoinSubstitution(
-                [
-                    FindPackageShare("eureka"),
-                    "urdf",
-                    "robot.xacro",
-                ]
-            ),
-        ]
-    )
+    share_dir = get_package_share_directory('eureka')
+    xacro_file = os.path.join(share_dir, 'urdf', 'robot.xacro')
+    robot_description_config = xacro.process_file(xacro_file)
+    robot_description_content = robot_description_config.toxml()
     robot_description = {"robot_description": robot_description_content}
 
     robot_controllers = PathJoinSubstitution(
