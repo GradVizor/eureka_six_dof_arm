@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "compare": "cpp",
+        "*.tcc": "cpp",
+        "functional": "cpp",
+        "*.txx": "cpp"
+    }
+}
