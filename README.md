@@ -1,6 +1,8 @@
 # Eureka (6 D.O.F.)
 Eureka is a 6 degree of freedom robotic arm designed to perform tasks like painting, examine, welding, surgeries and simple pick n place. It utilizes *ROS2*, *Rviz2* for simulation, and implemented *MoveIt2* for planning and execution of any task. I've implemented control with the help of *ros2_control* features for precise motor control (made custom hardware interface).
 
+![Eureka in Action](eureka/resource/eureka.mp4)
+
 ## Table of Contents
 1) Features
 
